@@ -43,9 +43,46 @@ function game() {
   let playerPoints = 0;
   let machinePoints = 0;
 
+  //sum up the score
   for (let i = 0; i < 5; i++) {
     let playerSelection = prompt("Chose among Rock, Paper or Scissor");
     let computerSelection = getComputerChoice();
-    console.log(playRound(playerSelection, computerSelection));
+
+    var previousResult = playRound(playerSelection, computerSelection);
+
+    let resultPlayer = 0;
+    let resultMachine = 0;
+
+    if (previousResult[1] == "player") {
+      console.log(previousResult[0]);
+      resultPlayer++;
+    } else if (previousResult[1] == "machine") {
+      console.log(previousResult[0]);
+      resultMachine++;
+    } else if (previousResult[1] == "draw") {
+      console.log(previousResult[0]);
+    } else {
+      console.log(previousResult[0]);
+      console.log("The point goes to Machine this time");
+      resultMachine++;
+    }
+  }
+
+  //displaying the results and giving a winner
+  if (resultPlayer > resultMachine) {
+    console.log("The result is:");
+    console.log("Player: " + resultPlayer);
+    console.log("Machine: " + resultMachine);
+    console.log("Congratulations!!! Player is the winner this time");
+  } else if (resultMachine > resultPlayer) {
+    console.log("The result is:");
+    console.log("Player: " + resultPlayer);
+    console.log("Machine: " + resultMachine);
+    console.log("Not this time!!! Machine is the winner, you can try again");
+  } else {
+    console.log("The result is:");
+    console.log("Player: " + resultPlayer);
+    console.log("Machine: " + resultMachine);
+    console.log("OMG, It's a draw!!! You both are locky this time");
   }
 }
