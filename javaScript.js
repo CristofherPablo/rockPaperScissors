@@ -13,25 +13,25 @@ function playRound(playerPick, computerPick) {
 
   //Testing for Rock
   if (player == "rock" && machine == "scissor") {
-    return "You Win! Rock beats Scissor";
+    return ["You Win! Rock beats Scissor", "player"];
   } else if (player == "rock" && machine == "paper") {
-    return "You Lost! Paper beats Rock";
+    return ["You Lost! Paper beats Rock", "machine"];
   } else if (player == "rock" && machine == "rock") {
-    return "It's a draw! Rock and Rock makes a wall";
+    return ["It's a draw! Rock and Rock makes a wall", "draw"];
     //Testing for Papper
   } else if (player == "paper" && machine == "scissor") {
-    return "You Lost! Scissor beats Paper";
+    return ["You Lost! Scissor beats Paper", "machine"];
   } else if (player == "paper" && machine == "rock") {
-    return "You Win! Paper beats Rock";
+    return ["You Win! Paper beats Rock", "player"];
   } else if (player == "paper" && machine == "paper") {
-    return "It's a draw! Paper with Paper makes a book";
+    return ["It's a draw! Paper with Paper makes a book", "draw"];
     //Testing for scissor
   } else if (player == "scissor" && machine == "rock") {
-    return "You Lost! Rock beats Scissor";
+    return ["You Lost! Rock beats Scissor", "machine"];
   } else if (player == "Scissor" && machine == "Paper") {
-    return "You Win! Scissor beats Paper";
+    return ["You Win! Scissor beats Paper", "player"];
   } else if (player == "scissor" && machine == "scissor") {
-    return "It's a draw! Scissor with Scissor you loose an eye";
+    return ["It's a draw! Scissor with Scissor you loose an eye", "draw"];
   } else {
     return "Please check if you chose among Paper, Rock or Scissor.";
   }
@@ -40,8 +40,8 @@ function playRound(playerPick, computerPick) {
 // Function to record the scores from 5 rounds of games
 
 function game() {
-  let playerPoints = 0;
-  let machinePoints = 0;
+  let resultPlayer = 0;
+  let resultMachine = 0;
 
   //sum up the score
   for (let i = 0; i < 5; i++) {
@@ -49,9 +49,6 @@ function game() {
     let computerSelection = getComputerChoice();
 
     var previousResult = playRound(playerSelection, computerSelection);
-
-    let resultPlayer = 0;
-    let resultMachine = 0;
 
     if (previousResult[1] == "player") {
       console.log(previousResult[0]);
@@ -62,7 +59,7 @@ function game() {
     } else if (previousResult[1] == "draw") {
       console.log(previousResult[0]);
     } else {
-      console.log(previousResult[0]);
+      console.log(previousResult);
       console.log("The point goes to Machine this time");
       resultMachine++;
     }
