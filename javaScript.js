@@ -8,7 +8,7 @@ function getComputerChoice() {
 //Function that test who wins and return a message.
 function playRound(playerPick, computerPick) {
   //making the data got, lower case so it became case insensitive.
-  let player = playerPick.toLowerCase();
+  let player = playerPick.toLowerCase().trim();
   let machine = computerPick.toLowerCase();
 
   //Testing for Rock
@@ -37,3 +37,15 @@ function playRound(playerPick, computerPick) {
   }
 }
 
+// Function to record the scores from 5 rounds of games
+
+function game() {
+  let playerPoints = 0;
+  let machinePoints = 0;
+
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Chose among Rock, Paper or Scissor");
+    let computerSelection = getComputerChoice();
+    console.log(playRound(playerSelection, computerSelection));
+  }
+}
