@@ -12,6 +12,7 @@ function playRound(playerPick, computerPick) {
   let machine = computerPick.toLowerCase();
 
 
+
   //Testing for Rock
   if (player == "rock" && machine == "scissor") {
     return ["You Win! Rock beats Scissor", "player"];
@@ -99,11 +100,15 @@ let buttons = document.getElementsByTagName("button");
 for (let button of buttons) {
   button.addEventListener("click", () => {
     playerPick = button.id.toString();
-    //console.log("player " + playerPick);
     let computerSelection = getComputerChoice();
     playRound(playerPick, computerSelection);
 
     var previousResult = playRound(playerPick, computerSelection);
     winnerResults(previousResult, matchResult);
   });
+
+  //Creating the div to display the result !!!Need a function.
+
+  const div = document.createElement('div.content');
+  document.body.appendChild(div);
 }
