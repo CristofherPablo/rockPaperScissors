@@ -1,0 +1,12 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/*
+addEventListener('click',playerChoice);
+    let computerSelection = getComputerChoice();
+
+    var previousResult = playRound(playerSelection, computerSelection);
+    winnerResults(previousResult, matchResult);
