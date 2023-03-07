@@ -37,11 +37,30 @@ function playRound(playerPick, computerPick) {
   }
 }
 
+//Function to count the number of victories
+
+function winnerResults(result, matchResult) {
+  
+  if (result[1] == "player") {
+    console.log(result[0]);
+    matchResult[0] += 1;
+    return;
+  } else if (result[1] == "machine") {
+    console.log(result[0]);
+    matchResult[1] += 1;
+    return;
+  } else if (result[1] == "draw") {
+    console.log(result[0]);
+  } else {
+    console.log(result);
+    console.log("The point goes to Machine this time");
+  }
+}
+
 // Function to record the scores from 5 rounds of games
 
 function game() {
-  let resultPlayer = 0;
-  let resultMachine = 0;
+  let matchResult = [0,0];
 
   //sum up the score
   for (let i = 0; i < 5; i++) {
@@ -49,37 +68,8 @@ function game() {
     let computerSelection = getComputerChoice();
 
     var previousResult = playRound(playerSelection, computerSelection);
-
-    if (previousResult[1] == "player") {
-      console.log(previousResult[0]);
-      resultPlayer++;
-    } else if (previousResult[1] == "machine") {
-      console.log(previousResult[0]);
-      resultMachine++;
-    } else if (previousResult[1] == "draw") {
-      console.log(previousResult[0]);
-    } else {
-      console.log(previousResult);
-      console.log("The point goes to Machine this time");
-      resultMachine++;
-    }
+    winnerResults(previousResult,matchResult);
   }
 
   //displaying the results and giving a winner
-  if (resultPlayer > resultMachine) {
-    console.log("The result is:");
-    console.log("Player: " + resultPlayer);
-    console.log("Machine: " + resultMachine);
-    console.log("Congratulations!!! Player is the winner this time");
-  } else if (resultMachine > resultPlayer) {
-    console.log("The result is:");
-    console.log("Player: " + resultPlayer);
-    console.log("Machine: " + resultMachine);
-    console.log("Not this time!!! Machine is the winner, you can try again");
-  } else {
-    console.log("The result is:");
-    console.log("Player: " + resultPlayer);
-    console.log("Machine: " + resultMachine);
-    console.log("OMG, It's a draw!!! You both are locky this time");
-  }
 }
