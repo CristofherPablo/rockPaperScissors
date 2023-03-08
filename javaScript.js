@@ -73,6 +73,8 @@ function winnerResults(result, matchResult) {
   }
 }
 
+// Function to display the final winner after 5 rounds
+
 function displayResults(resultPlayer, resultMachine, draw) {
   const para = document.querySelector(".displayer > p");
 
@@ -106,6 +108,10 @@ for (let button of buttons) {
 
     if (matchResult[0] == 5 || matchResult[1] == 5 || matchResult[2] == 5) {
       displayResults(matchResult[0], matchResult[1], matchResult[2]);
-    }
+      
+      for(let button of buttons){
+        button.disabled = true;
+      };
+    };
   });
 }
