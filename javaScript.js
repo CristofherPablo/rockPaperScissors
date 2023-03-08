@@ -11,8 +11,6 @@ function playRound(playerPick, computerPick) {
   let player = playerPick.toLowerCase().trim();
   let machine = computerPick.toLowerCase();
 
-
-
   //Testing for Rock
   if (player == "rock" && machine == "scissor") {
     return ["You Win! Rock beats Scissor", "player"];
@@ -42,7 +40,11 @@ function playRound(playerPick, computerPick) {
 //Function to count the number of victories
 
 function winnerResults(result, matchResult) {
+  const para = document.querySelector(".displayer p");
+  
+  
   if (result[1] == "player") {
+    para.innerText = result[0];
     console.log(result[0]);
     matchResult[0] += 1;
     return;
@@ -97,18 +99,19 @@ function game() {
 let playerPick = null;
 let matchResult = [0, 0];
 let buttons = document.getElementsByTagName("button");
+
 for (let button of buttons) {
   button.addEventListener("click", () => {
     playerPick = button.id.toString();
+
     let computerSelection = getComputerChoice();
     playRound(playerPick, computerSelection);
 
     var previousResult = playRound(playerPick, computerSelection);
     winnerResults(previousResult, matchResult);
+
+    if (matchResult[0] == 5 || matchResult[1] == 5) {
+      displayResults(matchResult[0], matchResult[1]);
+    }
   });
-
-  //Creating the div to display the result !!!Need a function.
-
-  const div = document.createElement('div.content');
-  document.body.appendChild(div);
 }

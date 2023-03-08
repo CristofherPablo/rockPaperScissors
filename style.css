@@ -10,3 +10,12 @@ addEventListener('click',playerChoice);
 
     var previousResult = playRound(playerSelection, computerSelection);
     winnerResults(previousResult, matchResult);
+
+
+
+
+//Creating the div to display the result !!!Need a function.
+
+const div = document.createElement("div.content");
+document.body.appendChild(div);
+
