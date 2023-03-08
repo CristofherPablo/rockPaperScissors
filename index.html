@@ -12,20 +12,25 @@
     <title>Rock Paper and Scissors Game</title>
   </head>
   <body>
-    <h1>Chose among Rock, Paper or Scissor</h1>
-    <div>
-      <button id="paper">Paper</button>
-      <button id="rock">Rock</button>
-      <button id="scissor">Scissor</button>
-    </div>
-    <div class="displayer">
-      <div class="scoreboard">
-        <p>Player: <span>-</span></p>
-        <p>Draw: <span>-</span></p>
-        <p>Machine: <span>-</span></p>
+
+    <div class="wrapper">
+      <h1>Chose among Rock, Paper or Scissor</h1>
+      <div>
+        <button class="choice-button" id="paper">Paper</button>
+        <button class="choice-button" id="rock">Rock</button>
+        <button class="choice-button" id="scissor">Scissor</button>
       </div>
-      <p></p>
+      <div class="displayer">
+        <div class="scoreboard">
+          <p>Player: <span>0</span></p>
+          <p>Draw: <span>0</span></p>
+          <p>Machine: <span>0</span></p>
+        </div>
+        <p>Let's Play!!!!</p>
+      </div>
+      <button class="restart">Play Again</button>
     </div>
+
     <script src="javaScript.js"></script>
   </body>
 </html>

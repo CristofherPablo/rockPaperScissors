@@ -40,7 +40,7 @@ function playRound(playerPick, computerPick) {
 //function to display the scores live
 function scoreBoard(matchResult) {
   const scoreboard = document.querySelector(".scoreboard");
-  console.log(scoreboard);
+
   const player = scoreboard.querySelector("p:nth-of-type(1) span");
   player.textContent = matchResult[0];
 
@@ -92,9 +92,11 @@ function displayResults(resultPlayer, resultMachine, draw) {
 }
 
 let matchResult = [0, 0, 0];
+const refresh = document.querySelector(".restart");
+refresh.style.display = "none";
 // Function to record the scores from 5 rounds of games
 
-let buttons = document.getElementsByTagName("button");
+let buttons = document.getElementsByClassName("choice-button");
 let playerPick = null;
 for (let button of buttons) {
   button.addEventListener("click", () => {
@@ -112,6 +114,19 @@ for (let button of buttons) {
       for(let button of buttons){
         button.disabled = true;
       };
+      refresh.style.display = "block";
+      refresh.disabled = false;
+      refresh.addEventListener("click", () =>{
+        //location.reload();
+        matchResult = [0, 0, 0];
+        refresh.style.display = "none";
+        for(let button of buttons){
+          button.disabled = false;
+        };
+        const para = document.querySelector(".displayer > p");
+        para.innerText = "Let's Play Again!!!!";
+        scoreBoard(matchResult);
+      });
     };
   });
 }
