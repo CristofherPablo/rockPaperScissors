@@ -76,11 +76,11 @@ function winnerResults(result, matchResult) {
 function displayResults(resultPlayer, resultMachine, draw) {
   const para = document.querySelector(".displayer > p");
 
-  if (resultPlayer > resultMachine) {
+  if (resultPlayer == 5) {
     para.innerText = "The result is: \n" + "Player: " + resultPlayer + "\n" + "Machine: " + resultMachine +"\n" + "Congratulations!!! Player is the winner this time";
     
     return;
-  } else if (resultMachine > resultPlayer) {
+  } else if (resultMachine == 5) {
     para.innerText = "The result is: \n" + "Player: " + resultPlayer + "\n" + "Machine: " + resultMachine +"\n" + "Not this time!!! Machine is the winner, you can try again";
     return;
   } else if ( draw == 5){
@@ -104,7 +104,7 @@ for (let button of buttons) {
     var previousResult = playRound(playerPick, computerSelection);
     winnerResults(previousResult, matchResult);
 
-    if (matchResult[0] == 5 || matchResult[1] == 5) {
+    if (matchResult[0] == 5 || matchResult[1] == 5 || matchResult[2] == 5) {
       displayResults(matchResult[0], matchResult[1], matchResult[2]);
     }
   });
