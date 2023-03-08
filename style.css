@@ -4,6 +4,12 @@ body{
     justify-content: center;
     align-items: center;
 }
+
+.scoreboard{
+    display: flex;
+    flex: 1;
+    gap: 100px;
+}
 /*
 addEventListener('click',playerChoice);
     let computerSelection = getComputerChoice();

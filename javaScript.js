@@ -37,23 +37,40 @@ function playRound(playerPick, computerPick) {
   }
 }
 
+//function to display the scores live
+function scoreBoard(matchResult) {
+  const scoreboard = document.querySelector(".scoreboard");
+  console.log(scoreboard);
+  const player = scoreboard.querySelector("p:nth-of-type(1) span");
+  player.textContent = matchResult[0];
+
+  const machine = scoreboard.querySelector("p:nth-of-type(3) span");
+  machine.textContent = matchResult[1];
+
+  const draw = scoreboard.querySelector("p:nth-of-type(2) span");
+  draw.textContent = matchResult[2];
+}
+
 //Function to count the number of victories
 
 function winnerResults(result, matchResult) {
-  const para = document.querySelector(".displayer p");
-  
-  
+  const para = document.querySelector(".displayer > p");
+  console.log(para);
+
   if (result[1] == "player") {
     para.innerText = result[0];
     matchResult[0] += 1;
+    scoreBoard(matchResult);
     return;
   } else if (result[1] == "machine") {
     para.innerText = result[0];
     matchResult[1] += 1;
+    scoreBoard(matchResult);
     return;
-  } else{
+  } else {
     para.innerText = result[0];
     matchResult[2] += 1;
+    scoreBoard(matchResult);
   }
 }
 
