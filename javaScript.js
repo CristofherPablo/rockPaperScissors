@@ -55,7 +55,6 @@ function scoreBoard(matchResult) {
 
 function winnerResults(result, matchResult) {
   const para = document.querySelector(".displayer > p");
-  console.log(para);
 
   if (result[1] == "player") {
     para.innerText = result[0];
@@ -74,46 +73,27 @@ function winnerResults(result, matchResult) {
   }
 }
 
-function displayResults(resultPlayer, resultMachine) {
+function displayResults(resultPlayer, resultMachine, draw) {
+  const para = document.querySelector(".displayer > p");
+
   if (resultPlayer > resultMachine) {
-    console.log("The result is:");
-    console.log("Player: " + resultPlayer);
-    console.log("Machine: " + resultMachine);
-    console.log("Congratulations!!! Player is the winner this time");
+    para.innerText = "The result is: \n" + "Player: " + resultPlayer + "\n" + "Machine: " + resultMachine +"\n" + "Congratulations!!! Player is the winner this time";
+    
     return;
   } else if (resultMachine > resultPlayer) {
-    console.log("The result is:");
-    console.log("Player: " + resultPlayer);
-    console.log("Machine: " + resultMachine);
-    console.log("Not this time!!! Machine is the winner, you can try again");
+    para.innerText = "The result is: \n" + "Player: " + resultPlayer + "\n" + "Machine: " + resultMachine +"\n" + "Not this time!!! Machine is the winner, you can try again";
     return;
-  } else {
-    console.log("The result is:");
-    console.log("Player: " + resultPlayer);
-    console.log("Machine: " + resultMachine);
-    console.log("OMG, It's a draw!!! You both are locky this time");
+  } else if ( draw == 5){
+    para.innerText = "The result is: \n" + "Player: " + resultPlayer + "\n" + "Machine: " + resultMachine +"\n" + "OMG, It's a draw!!! You both are lucky this time";
     return;
   }
 }
 
+let matchResult = [0, 0, 0];
 // Function to record the scores from 5 rounds of games
 
-function game() {
-  let matchResult = [0, 0];
-
-  //sum up the score
-  // for (let i = 0; i < 5; i++) {
-
-  // }
-
-  //displaying the results and giving a winner
-  displayResults(matchResult[0], matchResult[1]);
-}
-
-let playerPick = null;
-let matchResult = [0, 0, 0];
 let buttons = document.getElementsByTagName("button");
-
+let playerPick = null;
 for (let button of buttons) {
   button.addEventListener("click", () => {
     playerPick = button.id.toString();
@@ -125,7 +105,7 @@ for (let button of buttons) {
     winnerResults(previousResult, matchResult);
 
     if (matchResult[0] == 5 || matchResult[1] == 5) {
-      displayResults(matchResult[0], matchResult[1]);
+      displayResults(matchResult[0], matchResult[1], matchResult[2]);
     }
   });
 }
