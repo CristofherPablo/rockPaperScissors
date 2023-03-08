@@ -45,18 +45,15 @@ function winnerResults(result, matchResult) {
   
   if (result[1] == "player") {
     para.innerText = result[0];
-    console.log(result[0]);
     matchResult[0] += 1;
     return;
   } else if (result[1] == "machine") {
-    console.log(result[0]);
+    para.innerText = result[0];
     matchResult[1] += 1;
     return;
-  } else if (result[1] == "draw") {
-    console.log(result[0]);
-  } else {
-    console.log(result);
-    console.log("The point goes to Machine this time");
+  } else{
+    para.innerText = result[0];
+    matchResult[2] += 1;
   }
 }
 
@@ -97,7 +94,7 @@ function game() {
 }
 
 let playerPick = null;
-let matchResult = [0, 0];
+let matchResult = [0, 0, 0];
 let buttons = document.getElementsByTagName("button");
 
 for (let button of buttons) {
